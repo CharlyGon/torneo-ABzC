@@ -1,0 +1,397 @@
+/* ===== Estilos Globales ===== */
+
+/* ————— Degradado de fondo animado ————— */
+@keyframes subtleGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+body {
+  background: linear-gradient(45deg, #111, #222, #111);
+
+  background-size: 400% 400%;
+  animation: subtleGradient 30s ease-in-out infinite;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: url('/noise.png') repeat;
+  opacity: 0.03;
+}
+
+
+/* Contenedor principal */
+#root {
+  padding: 2rem;
+  background-color: #111;
+  min-height: 100vh;
+}
+
+/* ===== Encabezados ===== */
+h1 {
+  font-size: 2.25rem;
+  color: #ff6600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.75rem;
+  color: #ff6600;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: #ff6600;
+  margin: 0;
+}
+
+/* ===== SeriesCard ===== */
+.series-card {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-left: 4px solid #ff6600;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.series-card-header {
+  margin-bottom: 1rem;
+}
+
+.matches-row {
+  display: flex;
+  gap: 1.5rem;
+  /* Espacio entre cada columna de match */
+  flex-wrap: wrap;
+}
+
+.match-column {
+  flex: 1 1 250px;
+  /* Mínimo 250px, pero puede crecer */
+  display: flex;
+  flex-direction: column;
+}
+
+.match-label {
+  font-size: 1rem;
+  color: #ff6600;
+  margin-bottom: 0.5rem;
+}
+
+.match-input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background-color: #222;
+  color: #eee;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.match-input:focus {
+  border-color: #ff6600;
+}
+
+.result-select {
+  margin-top: 0.25rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background-color: #222;
+  color: #eee;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.result-select:focus {
+  border-color: #ff6600;
+}
+
+.save-button {
+  margin-top: 1.25rem;
+  padding: 0.65rem 1.25rem;
+  background-color: #ff6600;
+  border: none;
+  border-radius: 4px;
+  color: #111;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.save-button:hover {
+  background-color: #e65c00;
+}
+
+/* ===== StandingsTable ===== */
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.standings-table th,
+.standings-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.standings-table thead th {
+  background-color: #333;
+  color: #ff6600;
+  border-bottom: 2px solid #555;
+}
+
+.standings-table tbody tr:nth-child(odd) {
+  background-color: #1c1c1c;
+}
+
+.standings-table tbody tr:nth-child(even) {
+  background-color: #222;
+}
+
+.standings-table tbody td {
+  color: #eee;
+}
+
+.standings-table tbody td.balance-positive {
+  color: #4caf50;
+  /* verde para balance positivo */
+}
+
+.standings-table tbody td.balance-negative {
+  color: #f44336;
+  /* rojo para balance negativo */
+}
+
+/* ===== Sección de desempate (tie-break) ===== */
+.tie-break {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-left: 4px solid #ff6600;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+
+  /* =====> Centramos todo el texto que haya dentro ====== */
+  text-align: center;
+}
+
+.tie-break h2 {
+  margin-bottom: 0.75rem;
+}
+
+.tie-break ol {
+  display: inline-block;
+  margin: 0 auto 1rem;
+  padding-left: 1.25rem;
+  text-align: left;
+  color: #ddd;
+}
+
+.tie-break p {
+  margin: 1rem auto 0;
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.4;
+  max-width: 600px;
+}
+
+/* ========== 2) Logo circular que gira “como moneda” ========== */
+.clan-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ff6600;
+  box-shadow: 0 0 8px rgba(255, 102, 0, 0.6);
+
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+
+  /* Animación de giro en el eje Y (coin-spin) */
+  animation: spin-coin 9s linear infinite;
+}
+
+@keyframes spin-coin {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* —————— TITULO PRINCIPAL —————— */
+.header-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  position: relative;
+  background: linear-gradient(60deg,
+      #ff6600,
+      #ffcc00,
+      #33ccff,
+      #6600ff);
+  background-size: 200% 200%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 8s ease infinite;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* —————— SUBTÍTULO [ABzC] —————— */
+.header-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.5em;
+  color: #ffc107;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-left: 0.5rem;
+}
+
+/* —————— ANIMACIÓN DEGRADADO —————— */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ========== 3) Estilos del título (opcional) ========== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.subtitle-small-z {
+  display: inline-block;
+  font-size: 0.8em;
+  vertical-align: middle;
+  color: #cddc39;
+}
+
+/* Contenedor de icono + nombre */
+.map-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* El icono en tamaño uniforme, con bordes redondeados */
+.map-icon {
+  width: 104px;
+  height: 94px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid #555;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+
+/* Opcional: hover para darle vida */
+.map-icon:hover {
+  transform: scale(1.1);
+}
+
+.map-name {
+  font-size: 0.95rem;
+  color: #eee;
+  font-weight: 500;
+}
+
+/* Contenedor global del bloque “Resultado” */
+.result-container {
+  margin-top: 0.75rem;
+}
+
+/* Label “Resultado:” */
+.result-label {
+  font-size: 0.95rem;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+
+/* Texto de “Pendiente” */
+.pending-text {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+  margin-left: 0.5rem;
+}
+
+/* Contenedor para nombre + badge */
+.result-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* Nombre del equipo */
+.team-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Badge al lado */
+.result-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* Colores del badge */
+.result-badge.win {
+  background-color: #4caf50;
+}
+
+.result-badge.loss {
+  background-color: #f44336;
+}
