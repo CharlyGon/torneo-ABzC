@@ -19,7 +19,7 @@ export const INITIAL_SERIES: RoundSeries[] = [
     teamB: "maquiJona",
     matches: [
       { matchNumber: 1, matchName: "Valle", result: "win", winner: "maquiJona" },
-      { matchNumber: 2, matchName: "", result: "Pendiente", winner: "Pendiente" },
+      { matchNumber: 2, matchName: "Montañas", result: "win", winner: "maquiJona" },
       { matchNumber: 3, matchName: "", result: "Pendiente", winner: "Pendiente" },
     ],
   },
