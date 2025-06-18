@@ -1,4 +1,4 @@
-import  { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import type { Team, RoundSeries } from "./types";
 
 type TeamID = Team["id"];
@@ -6,6 +6,7 @@ type TeamID = Team["id"];
 import { SeriesCard } from "./SeriesCard";
 import { StandingsTable } from "./StandingsTable";
 import "./styles.css";
+import { WinnerModal } from "./winnerModal";
 
 export const INITIAL_TEAMS: Team[] = [
   { id: "ferGonza", name: "Fer y Gonza" },
@@ -28,8 +29,8 @@ export const INITIAL_SERIES: RoundSeries[] = [
     teamA: "ferGonza",
     teamB: "maquiJona",
     matches: [
-      { matchNumber: 1, matchName: "", result: "Pendiente", winner: "Pendiente" },
-      { matchNumber: 2, matchName: "", result: "Pendiente", winner: "Pendiente" },
+      { matchNumber: 1, matchName: "Isla Volcanica", result: "win", winner: "maquiJona" },
+      { matchNumber: 2, matchName: "Erupción", result: "win", winner: "maquiJona" },
       { matchNumber: 3, matchName: "", result: "Pendiente", winner: "Pendiente" },
     ],
   },
@@ -47,6 +48,7 @@ export const INITIAL_SERIES: RoundSeries[] = [
 
 export function TournamentPage() {
   const [seriesList] = useState<RoundSeries[]>(INITIAL_SERIES);
+  const [isModalOpen, setModalOpen] = useState(true);
 
   const teamsRecord: Record<TeamID, string> = {
     ferGonza: "Fer y Gonza",
@@ -136,6 +138,11 @@ export function TournamentPage() {
           </p>
         </section>
       )}
+
+      <WinnerModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   );
 }

@@ -1,5 +1,99 @@
 /* ===== Estilos Globales ===== */
 
+/* ===== Modal overlay ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* ===== Modal box ===== */
+.modal-content {
+  position: relative;
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  color: #eee;
+}
+
+.modal-field {
+  margin: 1rem 0;
+}
+.modal-field label {
+  margin-right: 0.5rem;
+  color: #ddd;
+}
+.modal-field select {
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background: #222;
+  color: #eee;
+}
+
+/* ===== Close button ===== */
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+}
+.modal-close:hover {
+  color: #fff;
+}
+
+/* ===== Título ===== */
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #ff6600;
+}
+
+/* ===== File input ===== */
+.modal-content input[type="file"] {
+  display: block;
+  margin: 1rem 0;
+  color: #eee;
+}
+
+/* ===== Imagen de preview ===== */
+.modal-image-container {
+  text-align: center;
+}
+.modal-image {
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Botón para abrir modal ===== */
+.open-modal-button {
+  display: inline-block;
+  margin: 2rem auto;
+  padding: 0.6rem 1.2rem;
+  background-color: #ff6600;
+  color: #111;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.open-modal-button:hover {
+  background-color: #e65c00;
+}
+
 /* ————— Degradado de fondo animado ————— */
 @keyframes subtleGradient {
   0% {
